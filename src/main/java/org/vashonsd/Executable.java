@@ -3,16 +3,35 @@ package org.vashonsd;
 import java.io.InputStream;
 import java.io.PrintStream;
 
-public interface Executable {
-    public void start(InputStream is, PrintStream ps);
+public abstract class Executable implements Runnable {
+    InputStream input;
+    PrintStream output;
+    boolean running;
+    String name;
+    String description;
+    String author;
 
-    public void stop();
+    public Executable(InputStream is, PrintStream ps) {
+        input = is;
+        output = ps;
+        running = true;
+    }
 
-    public boolean isRunning();
+    public abstract void stop();
 
-    public String getName();
+    public boolean isRunning() {
+        return running;
+    }
 
-    public String getDescription();
+    public String getName() {
+        return name;
+    }
 
-    public String getAuthor();
+    public String getDescription() {
+        return description;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
 }

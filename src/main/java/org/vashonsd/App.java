@@ -9,6 +9,14 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println("Hello, world!");
+        Executable ex = new BasicGame(System.in, System.out);
+        Thread runThread = new Thread(ex);
+        runThread.start();
+        try {
+            runThread.join();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }
