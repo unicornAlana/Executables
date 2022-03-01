@@ -1,5 +1,8 @@
 package org.vashonsd;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -9,6 +12,7 @@ public class App
 {
     public static void main( String[] args )
     {
-        System.out.println("Hello, world!");
+        Executable e = new SimpleGame();
+        e.start(System.in, System.out);
     }
 }
