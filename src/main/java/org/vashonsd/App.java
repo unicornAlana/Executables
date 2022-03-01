@@ -14,5 +14,8 @@ public class App
     {
         Executable e = new SimpleGame();
         e.start(System.in, System.out);
+
+        Executable j = new JerrysGame();
+        j.start(System.in, System.out);
     }
 }
