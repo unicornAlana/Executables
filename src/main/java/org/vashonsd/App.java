@@ -10,9 +10,8 @@ import java.util.Map;
  */
 public class App 
 {
-    public static void main( String[] args )
-    {
-        Executable e = new SimpleGame();
+    public static void main( String[] args ) throws InterruptedException {
+        Executable e = new GameAlwyn();
         e.start(System.in, System.out);
     }
 }
