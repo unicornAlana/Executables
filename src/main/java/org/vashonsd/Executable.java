@@ -4,15 +4,11 @@ import java.io.InputStream;
 import java.io.PrintStream;
 
 public interface Executable {
-    public void start(InputStream is, PrintStream ps);
+    void start(InputStream is, PrintStream ps);
 
-    public void stop();
+    String getName();
 
-    public boolean isRunning();
+    String getDescription();
 
-    public String getName();
-
-    public String getDescription();
-
-    public String getAuthor();
+    String getAuthor();
 }
