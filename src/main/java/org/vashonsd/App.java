@@ -12,7 +12,9 @@ public class App
 {
     public static void main( String[] args )
     {
-        Executable e = new SimpleGame();
-        e.start(System.in, System.out);
+
+        Executable a = new Pumpkin();
+        a.start(System.in, System.out);
+
     }
 }
