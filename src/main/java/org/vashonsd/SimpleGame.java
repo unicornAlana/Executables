@@ -2,6 +2,7 @@ package org.vashonsd;
 
 import java.io.InputStream;
 import java.io.PrintStream;
+import java.util.Scanner;
 
 public class SimpleGame implements Executable {
     private String name;
@@ -10,7 +11,10 @@ public class SimpleGame implements Executable {
 
     @Override
     public void start(InputStream is, PrintStream ps) {
-        ps.println("You lose.");
+        Scanner scan = new Scanner(is);
+        ps.println("What would you like to say?");
+        String response = scan.nextLine();
+        ps.println(response + " is a fine thing to say.");
     }
 
     @Override
