@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public class App 
 {
-    public static void main( String[] args ) throws InterruptedException {
+    public static void main( String[] args ) {
         Executable e = new GameAlwyn();
         e.start(System.in, System.out);
     }

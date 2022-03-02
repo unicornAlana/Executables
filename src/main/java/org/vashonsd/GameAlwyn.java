@@ -9,14 +9,18 @@ import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class GameAlwyn implements Executable {
     @Override
-    public void start(InputStream is, PrintStream ps) throws InterruptedException {
+    public void start(InputStream is, PrintStream ps) {
 
         Scanner scan = new Scanner(System.in);
 
         int p1Guess = -1;
         int p2Guess = -1;
         ps.println("This is Guess the random number its a two player game and whoever wins will get a prize!");
-        SECONDS.sleep(2);
+        try {
+            SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         while (p1Guess < 0){
             ps.println("Player one guess a positive number:");
@@ -41,11 +45,23 @@ public class GameAlwyn implements Executable {
         }
 
 
-        SECONDS.sleep(1);
+        try {
+            SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ps.println("READY");
-        SECONDS.sleep(1);
+        try {
+            SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         ps.println("SET");
-        SECONDS.sleep(1);
+        try {
+            SECONDS.sleep(1);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
         int u = 0;
         int i = 0;
@@ -53,7 +69,11 @@ public class GameAlwyn implements Executable {
             ps.println(u);
             Random rand = new Random();
             i = rand.nextInt(10);
-            SECONDS.sleep(1);
+            try {
+                SECONDS.sleep(1);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             u ++;
 
 
@@ -72,16 +92,16 @@ public class GameAlwyn implements Executable {
     }
     @Override
     public String getName() {
-        return null;
+        return "rando!";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "a custom number randomiser game ";
     }
 
     @Override
     public String getAuthor() {
-        return null;
+        return "AHS";
     }
 }
