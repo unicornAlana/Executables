@@ -9,6 +9,9 @@ import java.util.Scanner;
 public class Hangman implements Executable {
     @Override
     public void start(InputStream is, PrintStream ps) {
+        hangman();
+    }
+    public static void hangman(){
         String[] words = {"apple", "zebra", "banana", "tree", "school", "bear", "quiz", "pear", "arm", "shoot", "bamboo", "head", "breakfast", "lunch", "dinner", "food", "letter"};
         Scanner input = new Scanner(System.in);
         Random rand = new Random();
