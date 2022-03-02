@@ -1,17 +1,12 @@
 package org.vashonsd;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
 /**
  *
  */
 public class App 
 {
     public static void main( String[] args ) throws InterruptedException {
-        Executable e = new Game();
+        Executable e = new RockPaperScissors();
         e.start(System.in, System.out);
     }
 }

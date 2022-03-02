@@ -7,7 +7,7 @@ import java.util.Random;
 import java.util.Scanner;
 import static java.util.concurrent.TimeUnit.SECONDS;
 
-public class Game implements Executable {
+public class RockPaperScissors implements Executable {
     private String name;
     private String description;
     private String author;
