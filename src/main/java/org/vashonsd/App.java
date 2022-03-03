@@ -36,5 +36,6 @@ public class App
     }
     public static void addExecutable(Executable e) {
         executables.put(e.getName(), e);
+
     }
 }
