@@ -12,6 +12,7 @@ import java.util.Map;
  */
 public class App 
 {
+
     public static Map<String, Executable> executables = new HashMap<>();
     static InputStream input;
     static PrintStream output;

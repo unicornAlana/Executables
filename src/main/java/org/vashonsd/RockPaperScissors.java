@@ -2,135 +2,175 @@ package org.vashonsd;
 
 import java.io.InputStream;
 import java.io.PrintStream;
-import java.util.Scanner;
+import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
+import static java.util.concurrent.TimeUnit.SECONDS;
 
 public class RockPaperScissors implements Executable {
-
-        private String name;
-
-        private String description;
-
-        private String author;
+    private String name;
+    private String description;
+    private String author;
 
     @Override
-    public void start(InputStream is, PrintStream ps) {
+    public void start(InputStream is, PrintStream ps) throws InterruptedException {
+        // uses an arraylist to give a list for the computer to pick randomly from
+        ArrayList<String> plays = new ArrayList<>();
+        plays.add("rock");
+        plays.add("paper");
+        plays.add("scissors");
+        Scanner scan = new Scanner(System.in);
 
-                Random rand = new Random();
+        String start;
+        do {
+            //adds a start part to the game
+            ps.println("Welcome challenger, are you prepared to face me in Rock, Paper, Scissors?");
+            SECONDS.sleep(1);
+            ps.println("Remember, do NOT use capitals while playing against me");
+            SECONDS.sleep(1);
+            ps.println("Type \"start\" to begin");
 
-                Scanner input = new Scanner(is);
-                boolean gameContinue = false;
-                int num = 0;
-                String playerOne;
-                String playerTwo;
-                String continuePlaying;
+            start = scan.nextLine();
 
-                ps.println("Computer or two player?");
-                String gameVersion = input.nextLine();
+        }
+        while (!start.equals("start"));
+        //makes a play again possible
+        boolean stop = false;
 
-                if (gameVersion.equals("Computer") || gameVersion.equals("C") || gameVersion.equals("computer") || gameVersion.equals("Comp")) {
-                    do {
+        while(!stop ) {
 
-                        gameContinue = false;
+            //gets players play
+            ps.println("Enter rock, paper, or scissors: ");
+            String play = scan.nextLine();
 
-                        num = rand.nextInt(3) + 1;
-                        ps.println("Rock, Paper or Scissors");
-                        String userInput = input.nextLine();
+            //gets computer play
+            Random r = new Random();
+            int randomItem = r.nextInt(plays.size());
+            String aiPlay = plays.get(randomItem);
 
-                        if (userInput.equals("Rock") || userInput.equals("r") || userInput.equals("rock")) {
-                            if (num == 1) {
-                                ps.println("Player: Rock | Computer: Rock");
-                                ps.println("It's a tie!");
-                            } else if (num == 2) {
-                                ps.println("Player: Rock | Computer: Paper");
-                                ps.println("Computer Wins!");
-                            } else {
-                                ps.println("Player: Rock | Computer: Scissors");
-                                ;
-                                ps.println("Player Wins!");
-                            }
-                        } else if (userInput.equals("Paper") || userInput.equals("paper") || userInput.equals("p")) {
-                            if (num == 1) {
-                                ps.println("Player: Paper | Computer: Rock");
-                                ps.println("Player Wins!");
-                            } else if (num == 2) {
-                                ps.println("Player: Paper | Computer: Paper");
-                                ps.println("It's a tie!");
-                            } else {
-                                ps.println("Player: Paper | Computer: Scissors");
-                                ps.println("Computer Wins!");
-                            }
-                        } else {
-                            if (num == 1) {
-                                ps.println("Player: Scissors | Computer: Rock");
-                                ps.println("Computer Wins!");
-                            } else if (num == 2) {
-                                ps.println("Player: Scissors | Computer: Paper");
-                                ps.println("Player Wins!");
-                            } else {
-                                ps.println("Player: Scissors | Computer: Scissors");
-                                ps.println("It's a tie!");
-                            }
-                        }
+            //compares computer's to player's plays
+            if (play.equals("scissors") && aiPlay.equals("rock")) {
+                ps.println("I play: " + aiPlay);
+                SECONDS.sleep(1);
+                ps.println("You have lost");
 
-                        ps.println("Do you want to keep playing?");
-                        continuePlaying = input.nextLine();
+            } else if (play.equals("scissors") && aiPlay.equals("paper")) {
+                ps.println("I play: " + aiPlay);
+                SECONDS.sleep(1);
+                ps.println("I have been defeated");
+            }
+            if (play.equals("paper") && aiPlay.equals("rock")) {
+                ps.println("I play: " + aiPlay);
+                SECONDS.sleep(1);
+                ps.println("At long last, I have lost");
 
-                        if (continuePlaying.equals("yes") && continuePlaying.equals("y")) {
-                            gameContinue = true;
-                        }
-                        else {
-                            break;
-                        }
-                    } while (gameContinue = true);
-                } else {
-                    do {
-                        gameContinue = false;
-                        ps.println("Player one type Rock, Paper or Scissors");
-                        playerOne = input.nextLine();
-                        ps.println("Player two type Rock, Paper or Scissors");
-                        playerTwo = input.nextLine();
-                        if (playerOne.equals(playerTwo)) {
-                            ps.println("Its a tie");
-                        } else if (playerOne.equals("Rock") && playerTwo.equals("Paper")) {
-                            ps.println("Player Two wins");
-                        } else if (playerOne.equals("Paper") && playerTwo.equals("Rock")) {
-                            ps.println("Player One wins");
-                        } else if (playerOne.equals("Paper") && playerTwo.equals("Scissors")) {
-                            ps.println("Player Two wins");
-                        }
-                        else if (playerOne.equals("Scissors") && playerTwo.equals("Paper")) {
-                            ps.println("Player One wins");
-                        }
-                        else if (playerOne.equals("Rock") && playerTwo.equals("Scissors")) {
-                            ps.println("Player One wins");
-                        } else if (playerOne.equals("Scissors") && playerTwo.equals("Rock")) {
-                            ps.println("Player Two wins");
-                        }
-                        ps.println("Do you want to keep playing?");
-                        continuePlaying = input.nextLine();
-                        if (continuePlaying.equals("Yes") && continuePlaying.equals("y")) {
-                            gameContinue = true;
-                        }
-                        else {
-                            break;
-                        }
-                    } while (gameContinue = true);
+            } else if (play.equals("paper") && aiPlay.equals("scissors")) {
+                ps.println("I play: " + aiPlay);
+                SECONDS.sleep(1);
+                ps.println("I emerge victorious");
+            }
+
+            if (play.equals("rock") && aiPlay.equals("scissors")) {
+                ps.println("I play: " + aiPlay);
+                SECONDS.sleep(1);
+                ps.println("WHAT!");
+                SECONDS.sleep(1);
+                ps.println("You actually managed to win");
+            }
+
+            else if (play.equals("rock") && aiPlay.equals("paper")) {
+                ps.println("I play: " + aiPlay);
+                SECONDS.sleep(1);
+                ps.println("Are you even trying to win?");
+                SECONDS.sleep(1);
+                ps.println("Better luck next time");
+            }
+
+            //easter egg
+            else if (play.equals("sans")) {
+                ps.println("Ah");
+                SECONDS.sleep(1);
+                ps.println("I appear to have been discovered");
+                SECONDS.sleep(1);
+                ps.println("░░░░░░░░░░░░░░░░██████████████████\n" +
+                        "░░░░░░░░░░░░████░░░░░░░░░░░░░░░░░░████\n" +
+                        "░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░██\n" +
+                        "░░░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░██\n" +
+                        "░░░░░░░░██░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░██\n" +
+                        "░░░░░░░░██░░░░░░░░░░░░░░░░░░░░██████░░░░██\n" +
+                        "░░░░░░░░██░░░░░░░░░░░░░░░░░░░░██████░░░░██\n" +
+                        "░░░░░░░░██░░░░██████░░░░██░░░░██████░░░░██\n" +
+                        "░░░░░░░░░░██░░░░░░░░░░██████░░░░░░░░░░██\n" +
+                        "░░░░░░░░████░░██░░░░░░░░░░░░░░░░░░██░░████\n" +
+                        "░░░░░░░░██░░░░██████████████████████░░░░██\n" +
+                        "░░░░░░░░██░░░░░░██░░██░░██░░██░░██░░░░░░██\n" +
+                        "░░░░░░░░░░████░░░░██████████████░░░░████\n" +
+                        "░░░░░░░░██████████░░░░░░░░░░░░░░██████████\n" +
+                        "░░░░░░██░░██████████████████████████████░░██\n" +
+                        "░░░░████░░██░░░░██░░░░░░██░░░░░░██░░░░██░░████\n" +
+                        "░░░░██░░░░░░██░░░░██████░░██████░░░░██░░░░░░██\n" +
+                        "░░██░░░░████░░██████░░░░██░░░░██████░░████░░░░██\n" +
+                        "░░██░░░░░░░░██░░░░██░░░░░░░░░░██░░░░██░░░░░░░░██\n" +
+                        "░░██░░░░░░░░░░██░░██░░░░░░░░░░██░░██░░░░░░░░░░██\n" +
+                        "░░░░██░░░░░░██░░░░████░░░░░░████░░░░██░░░░░░██\n" +
+                        "░░░░░░████░░██░░░░██░░░░░░░░░░██░░░░██░░████\n" +
+                        "░░░░░░░░██████░░░░██████████████░░░░██████\n" +
+                        "░░░░░░░░░░████░░░░██████████████░░░░████\n" +
+                        "░░░░░░░░██████████████████████████████████\n" +
+                        "░░░░░░░░████████████████░░████████████████\n" +
+                        "░░░░░░░░░░████████████░░░░░░████████████\n" +
+                        "░░░░░░██████░░░░░░░░██░░░░░░██░░░░░░░░██████\n" +
+                        "░░░░░░██░░░░░░░░░░████░░░░░░████░░░░░░░░░░██\n" +
+                        "░░░░░░░░██████████░░░░░░░░░░░░░░██████████");
+
+            }
+
+            //checks for user input error
+            else if (!play.equals("paper") && !play.equals("rock") && !play.equals("scissors") && !play.equals("sans")) {
+                ps.println("You have entered a play against the rules, therefore I win.");
+                SECONDS.sleep(1);
+                ps.println("Next time follow the rules");
+            }
+
+            //loops code again if there is a tie
+            if (play.equals(aiPlay)) {
+                ps.println("I play: " + aiPlay);
+                SECONDS.sleep(1);
+                ps.println("Alas we draw");
+                SECONDS.sleep(1);
+                ps.println("Now Again");
+                SECONDS.sleep(1);
+                ps.print("");
+
+            }
+
+            //Adds a way to play again instead of starting over
+            else {
+                SECONDS.sleep(1);
+                ps.println("Would you like to play again \nyes or no");
+                String again = scan.nextLine();
+
+                if (again.equals("no")) {
+                    stop = true;
                 }
             }
 
+        }
+    }
+    
+
     @Override
     public String getName() {
-        return null;
+        return name;
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return description;
     }
 
     @Override
     public String getAuthor() {
-        return null;
+        return author;
     }
 }
