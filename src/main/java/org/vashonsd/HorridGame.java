@@ -43,16 +43,16 @@ public class HorridGame implements Executable {
 
     @Override
     public String getName() {
-        return null;
+        return "Horrid";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "A sadistic version of Wordle.";
     }
 
     @Override
     public String getAuthor() {
-        return null;
+        return "AR";
     }
 }

@@ -83,17 +83,17 @@ public class bruhleImpl implements Executable {
 
     @Override
     public String getName() {
-        return null;
+        return "simple rps";
     }
 
     @Override
     public String getDescription() {
-        return null;
+        return "an implementation of rock paper scissors";
     }
 
     @Override
     public String getAuthor() {
-        return null;
+        return "MSP";
     }
 }
 
