@@ -4,7 +4,7 @@ import java.io.InputStream;
 import java.io.PrintStream;
 import java.util.Scanner;
 
-public class SimpleGame implements Executable {
+public class ScarlettGame implements Executable {
     private String name;
     private String description;
     private String author;
@@ -12,9 +12,15 @@ public class SimpleGame implements Executable {
     @Override
     public void start(InputStream is, PrintStream ps) {
         Scanner scan = new Scanner(is);
-        ps.println("What would you like to say?");
-        String response = scan.nextLine();
-        ps.println(response + " is a fine thing to say.");
+        ps.println("Hello. Enter any word to continue");
+        String userResponse = scan.nextLine();
+        int wordLength = userResponse.length();
+        ps.println("Your word has " + wordLength + " letters.");
+        if(wordLength >= 10){
+            ps.println("You win! Nice word.");
+        }else{
+            ps.println("Yikes, you lose. Maybe try entering a cooler word next time!");
+        }
     }
 
     @Override
