@@ -29,16 +29,16 @@ public class Pumpkin implements Executable {
 
     @Override
     public String getName() {
-        return name;
+        return "pumpkin";
     }
 
     @Override
     public String getDescription() {
-        return description;
+        return "returns given string in pig latin.";
     }
 
     @Override
     public String getAuthor() {
-        return author;
+        return "Alanana";
     }
 }
